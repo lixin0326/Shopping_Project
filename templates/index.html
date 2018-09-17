@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+    首页
+{% endblock %}
+
+{% block page_css %}
+    <style type="text/css">
+        #navigation_id {
+            background-color: red;
+        }
+
+        #navigation_id > li {
+            float: left;
+            padding: 10px;
+        }
+
+        #navigation_id  a {
+
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #navigation_id > li span {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+
+    <style type="text/css">
+
+    </style>
+
+{% endblock %}
+
+{% block page_js %}
+
+    <script type="text/javascript>">
+
+
+    </script>
+
+{% endblock %}
+
+{% block page_head %}
+
+    {% include 'include/top.html' %}
+    {% include 'include/search.html' %}
+
+{% endblock %}
+
+
+
+
+{% block page_main %}
+    {% include 'include/home/home_top_page.html' %}
+
+{% endblock %}
+
+
+
+
+
+{% block page_foot %}
+
+{% endblock %}
