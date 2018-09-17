@@ -1,13 +1,7 @@
-<div class="banner" id="ban">
+<div class="banner" id="b04">
     <ul>
-        <li><a><img src="#"></a></li>
-        <li><a><img src="#"></a></li>
-        <li><a><img src="#"></a></li>
-        <li><a><img src="#"></a></li>
-        <li><a><img src="#"></a></li>
-
-
-
-
+        {% for ban in  banner %}
+            <li><a href="#"><img src="static/{{ ban.image }}"></a></li>
+        {% endfor %}
     </ul>
 </div>
