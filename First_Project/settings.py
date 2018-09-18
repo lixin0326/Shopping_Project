@@ -33,6 +33,8 @@ MY_APPS = [
     'apps.pay',
     # 商品详情模块
     'apps.shop_detail',
+    # 搜索
+    'apps.search',
 ]
 
 INSTALLED_APPS = SYS_APPS + EXT_APPS + MY_APPS

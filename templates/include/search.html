@@ -1,7 +1,6 @@
-<div>
-    <img src="#">
-    <form action="#" method="get">
-        <input type="text">
-        <input type="submit" value="搜索">
+<div id="search">
+    <img src="/static/logo.gif" id="logo_img">
+    <form action="{% url 'search_two' %}" method="get" id="form1">
+        <input type="text" id="search1" name="keyword"><input type="submit" value="搜索" id="btn_search1">
     </form>
 </div>

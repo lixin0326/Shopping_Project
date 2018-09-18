@@ -3,21 +3,73 @@
     首页
 {% endblock %}
 {% block page_css %}
+
     {# 头部样式 #}
     <style type="text/css">
-       #top1{
-           height: 30px;
-           width: 100%;
-           background-color: gray;
-       }
-    </style>
+        #top1 {
+            height: 30px;
+            width: 100%;
+            background-color: #F0F0F0;
 
-    {# 导航菜单 #}
-    <style type="text/css">
-        #navigation_id {
-            background: red;
         }
 
+        #left_head {
+            color: gray;
+            position: relative;
+            top: 5px;
+            float: left;
+        }
+
+        #right_head {
+            float: right;
+        }
+    </style>
+    {#搜索样式#}
+    <style type="text/css">
+        #logo_img {
+            position: absolute;
+        }
+
+        #search {
+            height: 130px;
+            width: 100%;
+        }
+
+        #form1 {
+            position: absolute;
+            margin-left: 400px;
+            margin-top: 40px;
+        }
+
+        #search1 {
+            position: relative;
+            vertical-align: middle;
+            outline: 0;
+        {#消除点击时的光亮#} font-size: 18px;
+            border-color: red;
+            height: 35px;
+            width: 400px;
+        }
+
+        #btn_search1 {
+            outline: 0;
+            vertical-align: middle;
+            font-size: 18px;
+            color: whitesmoke;
+            font-weight: bold;
+            height: 39px;
+            width: 100px;
+            background-color: #EE0000;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    {#导航菜单#}
+    <style type="text/css">
+        #navigation_id {
+            background-color: red;
+
+        }
         #navigation_id > li {
             float: left;
             padding: 10px;
@@ -29,18 +81,19 @@
         }
 
         #navigation_id span {
+            margin-left: 85px;
             color: black;
             font-size: 22px;
             font-weight: inherit;
         }
-        #navigation_id a:hover{
+
+        #navigation_id a:hover {
             color: white;
         }
 
     </style>
     {#轮播图样式#}
     <style type="text/css">
-
         .banner {
             position: relative;
             overflow: auto;
@@ -54,7 +107,7 @@
 
         #b04 {
             width: 100%;
-            height: 500px;
+            height: 550px;
         }
 
         #b04 .dots {
@@ -99,46 +152,39 @@
 
         #b04 img {
             width: 100%;
-            height: 500px;
+            height: 550px;
         }
-
     </style>
-    {#    分类菜单样式#}
+    {#分类菜单样式#}
     <style type="text/css">
         #cate_id {
             cursor: pointer;
-            border: 1px;
-            margin-left: 20px;
-            top: 100px;
+            margin-left: 100px;
             height: 400px;
-            position: absolute;
-
         }
 
         #cate_id > li {
-            width: 200px;
+            background-color: rgba(0,0,0,0.1);
+            width: 180px;
+            height: 30px;
         }
 
         #cate_id > li:hover {
-            background: aqua;
+            background: whitesmoke;
         }
-
         .sub {
             display: none;
             position: absolute;
             top: 0;
-            left: 200px;
+            left: 180px;
             width: 600px;
-            height: 475px;
-            background: aqua;
+            height: 510px;
+            background: whitesmoke;
         }
-
         .sub div {
             display: inline-block;
         }
-
     </style>
-
 
 {% endblock %}
 
@@ -152,21 +198,17 @@
             $('#b04').unslider({
                 dots: true
             });
-
             $("#cate_id>li").mouseover(function () {
                 {#当li鼠标移入之后,当前的ul要显示,其他的要隐藏#}
                 $('.sub').hide();
                 $(this).find('ul').show()
             })
-
             $("#cate_id").mouseleave(function () {
                 $(this).find('ul').hide()
             })
-
         })
-
-
     </script>
+
 {% endblock %}
 
 
@@ -181,6 +223,7 @@
 {% block page_main %}
     {#   导航菜单  分类菜单  轮播图#}
     {% include 'home/home_top_page.html' %}
+    {% include 'home/home_content_page.html' %}
 {% endblock %}
 
 {% block page_footer %}
