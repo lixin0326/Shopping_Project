@@ -4,6 +4,80 @@
     搜索
 {% endblock %}
 
+{% block page_css %}
+         {# 头部样式 #}
+    <style type="text/css">
+        .span1{
+            color: gray;
+        }
+        .span1:hover{
+            color: red;
+        }
+        #top1 {
+            height: 30px;
+            width: 100%;
+            background-color: #F0F0F0;
+
+        }
+        #left_head {
+            color: gray;
+            position: relative;
+            top: 5px;
+            float: left;
+            margin-left: 50px;
+        }
+        #right_head {
+            color: gray;
+            position: relative;
+            float: right;
+            top: 5px;
+            padding-right: 100px;
+        }
+    </style>
+         {# 搜索框样式 #}
+    <style type="text/css">
+        #logo_img {
+            position: absolute;
+        }
+
+        #search {
+            height: 130px;
+            width: 100%;
+        }
+
+        #form1 {
+            position: absolute;
+            margin-left: 400px;
+            margin-top: 40px;
+        }
+
+        #search1 {
+            position: relative;
+            vertical-align: middle;
+            outline: 0;
+        {#消除点击时的光亮#} font-size: 18px;
+            border-color: red;
+            height: 35px;
+            width: 400px;
+        }
+
+        #btn_search1 {
+            outline: 0;
+            vertical-align: middle;
+            font-size: 18px;
+            color: whitesmoke;
+            font-weight: bold;
+            height: 39px;
+            width: 100px;
+            background-color: #EE0000;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+{% endblock %}
+
+
 {% block page_head %}
 
     {% include 'include/top.html' %}

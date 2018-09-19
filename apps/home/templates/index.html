@@ -2,26 +2,35 @@
 {% block title %}
     首页
 {% endblock %}
+
 {% block page_css %}
 
     {# 头部样式 #}
     <style type="text/css">
+        .span1{
+            color: gray;
+        }
+        .span1:hover{
+            color: red;
+        }
         #top1 {
             height: 30px;
             width: 100%;
             background-color: #F0F0F0;
-
         }
-
         #left_head {
             color: gray;
             position: relative;
             top: 5px;
             float: left;
+            margin-left: 50px;
         }
-
         #right_head {
+            color: gray;
+            position: relative;
             float: right;
+            top: 5px;
+            padding-right: 100px;
         }
     </style>
     {#搜索样式#}

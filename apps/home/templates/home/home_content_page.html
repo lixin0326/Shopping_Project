@@ -5,7 +5,7 @@
             <ul class="clear">
                 {% for shop  in category.shops %}
                     <li style="float: left;width: 19%;padding: 5px;margin-left: 2px">
-                        <a href="#">
+                        <a href="{% url 'detail' %}?id={{ shop.shop_id }}">
                             <img src="/static/img/single/{{ shop.img.shop_img_id }}.jpg"
                             style="width: 100%;min-height: 250px">
                             <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 16px">
