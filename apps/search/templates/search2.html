@@ -7,17 +7,22 @@
 {% block page_css %}
          {# 头部样式 #}
     <style type="text/css">
-        .span1{
+        #left_head a {
             color: gray;
         }
-        .span1:hover{
+        #left_head a:hover{
+            color: red;
+        }
+        #right_head a{
+            color: gray;
+        }
+        #right_head a:hover{
             color: red;
         }
         #top1 {
             height: 30px;
             width: 100%;
             background-color: #F0F0F0;
-
         }
         #left_head {
             color: gray;
@@ -36,19 +41,20 @@
     </style>
          {# 搜索框样式 #}
     <style type="text/css">
-        #logo_img {
-            position: absolute;
-        }
-
         #search {
+            position: relative;
+            top:50px;
             height: 130px;
             width: 100%;
         }
-
+        #logo_img {
+            position: absolute;
+            top:-50px;
+        }
         #form1 {
             position: absolute;
-            margin-left: 400px;
-            margin-top: 40px;
+            left: 400px;
+            top: 0;
         }
 
         #search1 {
@@ -57,7 +63,7 @@
             outline: 0;
         {#消除点击时的光亮#} font-size: 18px;
             border-color: red;
-            height: 35px;
+            height: 39px;
             width: 400px;
         }
 

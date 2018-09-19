@@ -1,16 +1,21 @@
 <div id="top1">
     <div id="left_head">
-        <a href="http://127.0.0.1:8000/"><span class="span1">喵,欢迎来到天猫</span></a>&nbsp;&nbsp;
-        <a href="#"><span class="span1">请登录</span></a>&nbsp;&nbsp;
-        <a href="#"><span class="span1">免费注册</span></a>
+        <span class="glyphicon glyphicon-home"></span>
+        <a href="/"><span class="span1">天猫首页</span></a>&nbsp;&nbsp;
+        <span>喵,欢迎来到天猫</span>&nbsp;&nbsp;
+
+
+        {% if request.user.is_authenticated %}
+            <span>{{ request.user.username }}</span>
+              <a href="#">登出</a>
+        {% else %}
+            <a href="{% url 'login' %}">请登录</a>&nbsp;&nbsp;
+            <a href="#">免费注册</a>
+        {% endif %}
     </div>
     <div id="right_head">
-        我的淘宝
-        购物车0件
-        收藏夹
-        手机版
-        淘宝网
-        商家支持
-        网站导航
+        <a href="#">我的订单</a>
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <a href="#">购物车{{ request.user.userprofile.count }}件</a>
     </div>
 </div>

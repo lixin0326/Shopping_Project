@@ -6,8 +6,9 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link href="{% static 'css/common.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
-    <script src="/static/css/bootstrap.css"></script>
+
 
 
     {% block page_css %}
@@ -20,7 +21,7 @@
 
 </head>
 <body>
-<div id="warp">
+<div>
     <div id="head">
         {% block page_head %}
         {% endblock %}

@@ -7,12 +7,19 @@
 
     {# 头部样式 #}
     <style type="text/css">
-        .span1{
+        #left_head a {
             color: gray;
         }
-        .span1:hover{
+        #left_head a:hover{
             color: red;
         }
+        #right_head a{
+            color: gray;
+        }
+        #right_head a:hover{
+            color: red;
+        }
+
         #top1 {
             height: 30px;
             width: 100%;
@@ -35,19 +42,20 @@
     </style>
     {#搜索样式#}
     <style type="text/css">
-        #logo_img {
-            position: absolute;
-        }
-
         #search {
+            position: relative;
+            top:50px;
             height: 130px;
             width: 100%;
         }
-
+        #logo_img {
+            position: absolute;
+            top:-40px;
+        }
         #form1 {
             position: absolute;
-            margin-left: 400px;
-            margin-top: 40px;
+            left: 400px;
+            top: 0;
         }
 
         #search1 {
@@ -56,7 +64,7 @@
             outline: 0;
         {#消除点击时的光亮#} font-size: 18px;
             border-color: red;
-            height: 35px;
+            height: 39px;
             width: 400px;
         }
 
@@ -76,19 +84,18 @@
     {#导航菜单#}
     <style type="text/css">
         #navigation_id {
+            position: relative;
             background-color: red;
-
+            top:10px;
         }
         #navigation_id > li {
             float: left;
             padding: 10px;
         }
-
         #navigation_id a {
             font-size: 20px;
             font-weight: inherit;
         }
-
         #navigation_id span {
             margin-left: 85px;
             color: black;
@@ -108,15 +115,15 @@
             overflow: auto;
             text-align: center;
         }
-
         .banner ul li {
             list-style: none;
             float: left;
         }
 
         #b04 {
+            top:80px;
             width: 100%;
-            height: 550px;
+            height: 510px;
         }
 
         #b04 .dots {
