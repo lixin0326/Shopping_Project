@@ -194,7 +194,7 @@ class Migration(migrations.Migration):
                 ('phone', models.CharField(default='110', max_length=11)),
                 ('desc', models.CharField(max_length=255, null=True)),
                 ('uid', models.AutoField(primary_key=True, serialize=False, verbose_name='用户ID')),
-                ('icon', models.ImageField(default='apps/static/img/default.png', upload_to='upload/img/%Y%m%d', verbose_name='头像')),
+                ('icon', models.ImageField(default='apps/static/images/default.png', upload_to='upload/images/%Y%m%d', verbose_name='头像')),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={

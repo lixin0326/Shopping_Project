@@ -8,7 +8,7 @@
 	<title>欢迎来到登录界面</title>
 	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{% static 'htmleaf-demo.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/htmleaf-demo.css' %}">
 	<style type="text/css">
 		.form-bg{
 		    padding: 2em 0;
@@ -146,7 +146,7 @@
 	        <div class="container">
 	            <div class="row">
 	                <div class="col-md-offset-3 col-md-6">
-	                    <form class="form-horizontal" action="#" method="post">
+	                    <form class="form-horizontal" action="{% url 'login' %}" method="post">
                             {% csrf_token %}
 	                        <span class="heading">用户登录</span>
 	                        <div class="form-group">

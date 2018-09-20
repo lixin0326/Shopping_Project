@@ -29,7 +29,7 @@ class ImageStorage(FileSystemStorage):
         super().__init__(location, base_url)
         # 重写 _save方法
 
-    # uploaad/img/img_afsfsfds.png
+    # uploaad/images/img_afsfsfds.png
     # 修改文件的名称
     def _save(self, name, content):
         # 文件扩展名
@@ -47,8 +47,8 @@ class UserProfile(models.Model):
     phone = models.CharField(max_length=11, default='110')
     desc = models.CharField(max_length=255, null=True)
     uid = models.AutoField('用户ID', primary_key=True)
-    icon = models.ImageField(verbose_name=u'头像', max_length=100, upload_to='upload/img/%Y%m%d',
-                             default=u"apps/static/img/default.png")
+    icon = models.ImageField(verbose_name=u'头像', max_length=100, upload_to='upload/images/%Y%m%d',
+                             default=u"apps/static/images/default.png")
     user = models.OneToOneField('auth.User')
 
     class Meta:
@@ -61,7 +61,7 @@ class UserProfile(models.Model):
     #     后台显示图片
     #     :return:
     #     """
-    #     return u'<img width=50px src="%s" />' % self.icon.url
+    #     return u'<images width=50px src="%s" />' % self.icon.url
     #
     # img_show.short_description = '头像'
     # # 允许显示HTML tag

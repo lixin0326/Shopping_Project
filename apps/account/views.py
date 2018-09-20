@@ -13,7 +13,14 @@ def login_view(request):
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user and user.is_active:
-            user.count = ShopCar.objects.filter(user_id=user.userprofile.uid).aggregate(Sum('number'))
+            user.count = ShopCar.objects.filter(user_id=user.userprofile.uid).aggregate(
+                sum=Sum('number')).get('sum')  # 聚合函数
             login(request, user)
         else:
             return HttpResponse("不存在该用户!或该用户未激活!")
+
+
+def register_view(request):
+
+
+    return render(request, 'register.html')
