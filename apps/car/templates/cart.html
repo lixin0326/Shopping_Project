@@ -1,5 +1,56 @@
 {% extends 'base.html' %}
+{% load custom_filter %}
 
+{% block page_jq %}
+    <script type="text/javascript">
+        $(function () {
+            // 删除操作
+            let delete_url = '/car/delete/';
+            $('.remove').click(function () {
+                let $btn = $(this);
+                $.post(delete_url, {car_id: $(this).attr('car_id')}, function (result) {
+                    if (result.status === 200) {
+                        $btn.parents('tr').remove()
+                    }
+                })
+            });
+
+            // 进行加操作
+            $('.add').click(function () {
+                // alert() 弹框显示信息
+                //alert($(this).next('input').val())
+                let $input = $(this).next('input');
+                let value = parseInt($input.val()) < parseInt($input.attr('max'))
+                    ? parseInt($input.val()) + 1       //小于最大值就加一
+                    : parseInt($input.attr('max'));  //大于最大值就给它最大值
+                if (parseInt($input.val()) < parseInt($input.attr('max'))) {
+                    $.post(update_url, {action: '1', 'car_id': car_id}, function (result) {
+                        if (result.status === 200) {
+                            $input.val(value)
+                        }
+                    })
+                }
+            });
+
+            // 进行减
+            $('.delete').click(function () {
+                let $input = $(this).prev('input');
+                let value = $input.val() > 1
+                    ? $input.val() - 1
+                    : 1;
+                $.post(update_url, {ac: '2', 'car_id': 12}, function (result) {
+                    if (result.status === 200) {
+                        $input.val(value)
+                    }
+                })
+            })
+        });
+
+
+    </script>
+
+
+{% endblock %}
 
 
 {% block page_head %}
@@ -8,25 +59,38 @@
 
 
 {% block page_main %}
-       <table>
-            <tr>
-                <th><input type="checkbox">全选</th>
-                <th>商品详情</th>
-                <th>单价</th>
-                <th>数量</th>
-                <th>总价</th>
-                <th>操作</th>
-            </tr>
+    <table>
+        <tr>
+            <th><input type="checkbox">全选</th>
+            <th>商品详情</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>总价</th>
+            <th>操作</th>
+        </tr>
+        {% for car in cars %}
             <tr>
                 <td><input type="checkbox"></td>
-                <td><img src="#"><a href="#">商品详情</a></td>
-                <td>11.12</td>
-                <td><input type="number" value="10"></td>
-                <td>111.2</td>
-                <td><a href="#">删除</a></td>
-
+                <td><img src="/static/img/single/{{ car.shop.img.shop_img_id }}.jpg"
+                         style="width: 50px">
+                    <a href="#">{{ car.shop.name }}</a>
+                </td>
+                <td>{{ car.shop.promote_price }}</td>
+                <td>
+                    <button type="button" class="add">+</button>
+                    <input type="number" min="1" max="{{ car.shop.stock }}"
+                           value="{{ car.number }}">
+                    <button type="button" class="delete">-</button>
+                </td>
+                <td>{{ car.number|multiply:car.shop.promote_price }}</td>
+                <td>
+                    <button class="remove" car_id="{{ car.car_id }}">删除</button>
+                </td>
             </tr>
-       </table>
+        {% empty %}
+            空空如也<a href="/">浏览商品</a>
+        {% endfor %}
+    </table>
 {% endblock %}
 
 

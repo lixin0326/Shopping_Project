@@ -7,7 +7,7 @@
 
         {% if request.user.is_authenticated %}
             <span>{{ request.user.username }}</span>
-            <a href="#">退出</a>
+            <a href="{% url 'login_out' %}">退出</a>
         {% else %}
             <a href="{% url 'login' %}">请登录</a>&nbsp;&nbsp;
             <a href="{% url 'register' %}">免费注册</a>
@@ -16,9 +16,9 @@
     <div id="right_head">
         <a href="#">我的订单</a>
         <span class="glyphicon glyphicon-shopping-cart"></span>
-        <a href="{% url 'list_result' %}">购物车
+        <a href="{% url 'list_result' %}" id="car_id">购物车
             {% if request.user.is_authenticated %}
-                 {{ count }}件
+                {{ count }}件
             {% endif %}
         </a>
     </div>

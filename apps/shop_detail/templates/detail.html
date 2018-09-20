@@ -13,20 +13,25 @@
         #left_head a {
             color: gray;
         }
-        #left_head a:hover{
+
+        #left_head a:hover {
             color: red;
         }
-        #right_head a{
+
+        #right_head a {
             color: gray;
         }
-        #right_head a:hover{
+
+        #right_head a:hover {
             color: red;
         }
+
         #top1 {
             height: 30px;
             width: 100%;
             background-color: #F0F0F0;
         }
+
         #left_head {
             color: gray;
             position: relative;
@@ -34,6 +39,7 @@
             float: left;
             margin-left: 50px;
         }
+
         #right_head {
             color: gray;
             position: relative;
@@ -46,14 +52,16 @@
     <style type="text/css">
         #search {
             position: relative;
-            top:50px;
+            top: 50px;
             height: 130px;
             width: 100%;
         }
+
         #logo_img {
             position: absolute;
-            top:-40px;
+            top: -40px;
         }
+
         #form1 {
             position: absolute;
             left: 400px;
@@ -98,11 +106,13 @@
             float: left;
             width: 50%;
         }
+
         .shop_detail_content .detail_title {
             color: red;
             padding: 5px;
             text-align: center;
         }
+
         .detail_time {
             background: #2da77a;
             padding: 10px;
@@ -213,6 +223,8 @@
 {% endblock %}
 
 {% block page_jq %}
+
+
     <script type="text/javascript" language="JavaScript">
         $(function () {
             $('.shop_detail_img li').mouseover(function () {
@@ -220,27 +232,26 @@
                 $('.shop_detail_img>div>img').hide();
                 {#jQuery对象通过索引获取的对象都是原生的js对象#}
                 $('.shop_detail_img>div>img')[index].setAttribute('style', 'display:block')
-            })
-            {#商品的id#}
-            {#商品的数量#}
-
+            });
             $('#add_cars').click(function () {
-                //获取购买的数量
-                let $number = $('#number').val();
-                //获取商品的id
-                let $shop_id = $('#shop_id').val();
-                //提交到购物车
-                let ADD_URL = 'http://127.0.0.1:8080/car/add/';
-                data = {
-                    number: $number,
-                    shop_id: $shop_id
+                let add_url = 'http://127.0.0.1:8080/car/add/';
+                let data = {
+                    shop_id: {{ shop.shop_id }},
+                    number: $('#number').val(),
+                    'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
                 };
-                {#num=1&shop_id=777#}
-                $.get(ADD_URL, data, function (result) {
-                    alert(result)
-                });
+                $.post(add_url, data, function (result) {
+                    if (result && result.status === 200) {
+                        $('#car_id').text(result.count + '件')
+                    } else {
+                        alert('添加失败!!!!')
+                    }
+                })
             })
+
         })
+
+
     </script>
 {% endblock %}
 
