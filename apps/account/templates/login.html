@@ -3,12 +3,12 @@
 <head>
     {% load staticfiles %}
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>欢迎来到登录界面</title>
+	<title>登录首页</title>
 	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/htmleaf-demo.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/htmleaf-demo.css' %}">
 	<style type="text/css">
 		.form-bg{
 		    padding: 2em 0;
@@ -140,21 +140,21 @@
 	</style>
 </head>
 <body>
-	
+
 		</header>
 		<div class="demo form-bg">
 	        <div class="container">
 	            <div class="row">
 	                <div class="col-md-offset-3 col-md-6">
 	                    <form class="form-horizontal" action="{% url 'login' %}" method="post">
-                            {% csrf_token %}
-	                        <span class="heading">用户登录</span>
+	                        {% csrf_token %}
+                            <span class="heading">用户登录</span>
 	                        <div class="form-group">
-	                            <input type="text" class="form-control" name="username" placeholder="用户名">
+	                            <input type="text" class="form-control" id="inputUsername" name="username" placeholder="用户名">
 	                            <i class="fa fa-user"></i>
 	                        </div>
 	                        <div class="form-group help">
-	                            <input type="password" class="form-control" name="password" placeholder="密码">
+	                            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="密码">
 	                            <i class="fa fa-lock"></i>
 	                            <a href="#" class="fa fa-question-circle"></a>
 	                        </div>
@@ -171,7 +171,5 @@
 	            </div>
 	        </div>
 	    </div>
-		
-
 </body>
 </html>

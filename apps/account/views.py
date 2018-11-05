@@ -39,7 +39,7 @@ def register_view(request):
         password2 = request.POST.get('confirm_password')
         user = User.objects.filter(username=username)
         if user:
-            return JsonResponse(request, 'register.html', {'msg': '该用户已经存在!'})
+            return HttpResponse('该用户已经存在!')
         else:
             # 先保存主表的数据,然后在把主表的id给子表的外键字段(一对一映射关系)
             user = User.objects.create_user(username=username,

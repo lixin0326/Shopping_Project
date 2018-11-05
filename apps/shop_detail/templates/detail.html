@@ -223,8 +223,6 @@
 {% endblock %}
 
 {% block page_jq %}
-
-
     <script type="text/javascript" language="JavaScript">
         $(function () {
             $('.shop_detail_img li').mouseover(function () {
@@ -238,13 +236,14 @@
                 let data = {
                     shop_id: {{ shop.shop_id }},
                     number: $('#number').val(),
-                    'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
                 };
                 $.post(add_url, data, function (result) {
                     if (result && result.status === 200) {
                         $('#car_id').text(result.count + '件')
-                    } else {
-                        alert('添加失败!!!!')
+                        alert('添加成功!')
+                    } else if (result.status===401) {
+                       window.href = result.url;
+                        alert('请先登录!')
                     }
                 })
             })

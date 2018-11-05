@@ -118,3 +118,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 LOGIN_URL = '/account/login/'
+
+# =========支付宝配置相关=========
+APP_ID = ''
+ALI_PAY_URL = ''
+# 测试支付环境
+ALI_PAY_DEV_URL = ''
+# 公钥配置
+# APP_PUBLIC_STRING = open(BASE_DIR + '/pay/').read()
+# 私钥配置
+# APP_PRIVATE_STRING = open(BASE_DIR + '/pay/').read()

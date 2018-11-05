@@ -5,7 +5,9 @@
     <script type="text/javascript">
         $(function () {
             // 删除操作
-            let delete_url = '/car/delete/';
+            let delete_url = '/car/delete/'; //删除路径
+            // 添加操作
+            let update_url = '/car/update/';  //添加路径
             $('.remove').click(function () {
                 let $btn = $(this);
                 $.post(delete_url, {car_id: $(this).attr('car_id')}, function (result) {
@@ -14,7 +16,6 @@
                     }
                 })
             });
-
             // 进行加操作
             $('.add').click(function () {
                 // alert() 弹框显示信息
@@ -24,42 +25,40 @@
                     ? parseInt($input.val()) + 1       //小于最大值就加一
                     : parseInt($input.attr('max'));  //大于最大值就给它最大值
                 if (parseInt($input.val()) < parseInt($input.attr('max'))) {
-                    $.post(update_url, {action: '1', 'car_id': car_id}, function (result) {
+                    let $add=$(this).attr('car_id');
+                    $.post(update_url, {action: '1', 'car_id':$add}, function (result) {
                         if (result.status === 200) {
                             $input.val(value)
                         }
                     })
                 }
             });
-
             // 进行减
             $('.delete').click(function () {
                 let $input = $(this).prev('input');
                 let value = $input.val() > 1
                     ? $input.val() - 1
                     : 1;
-                $.post(update_url, {ac: '2', 'car_id': 12}, function (result) {
+                let $jian=$(this).attr('car_id');
+                $.post(update_url, {action: '2', 'car_id': $jian}, function (result) {
                     if (result.status === 200) {
                         $input.val(value)
                     }
                 })
             })
-        });
-
-
+        })
     </script>
-
-
 {% endblock %}
 
 
 {% block page_head %}
+
 {% endblock %}
 
 
 
 {% block page_main %}
-    <table>
+    <table style="margin-left:300px;margin-top:50px;border:1px solid black;">
         <tr>
             <th><input type="checkbox">全选</th>
             <th>商品详情</th>
@@ -73,18 +72,18 @@
                 <td><input type="checkbox"></td>
                 <td><img src="/static/img/single/{{ car.shop.img.shop_img_id }}.jpg"
                          style="width: 50px">
-                    <a href="#">{{ car.shop.name }}</a>
+                    <a href="http://127.0.0.1:8080/shop_detail/detail/?id={{ car.shop.shop_id }}">{{ car.shop.name }}</a>
                 </td>
                 <td>{{ car.shop.promote_price }}</td>
                 <td>
-                    <button type="button" class="add">+</button>
+                    <button type="button" class="add" car_id="{{ car.car_id }}">+</button>
                     <input type="number" min="1" max="{{ car.shop.stock }}"
                            value="{{ car.number }}">
-                    <button type="button" class="delete">-</button>
+                    <button type="button" class="delete" car_id="{{ car.car_id }}">-</button>
                 </td>
                 <td>{{ car.number|multiply:car.shop.promote_price }}</td>
                 <td>
-                    <button class="remove" car_id="{{ car.car_id }}">删除</button>
+                    <button class="remove" car_id="{{ car.car_id }}">移除商品</button>
                 </td>
             </tr>
         {% empty %}

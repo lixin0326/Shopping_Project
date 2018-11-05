@@ -7,7 +7,6 @@ from apps.home.models import *
 from django.http import HttpResponse, JsonResponse
 
 
-@login_required
 @csrf_exempt
 def add(request):
     """
@@ -17,9 +16,8 @@ def add(request):
     当商品不存在用户的购物车时候,创建该条记录
 
    """
-
     if request.is_ajax():
-        if request.uesr.is_authenticated():
+        if request.user.is_authenticated():
             try:
                 shop_id = request.POST.get('shop_id')
                 number = request.POST.get('number')
@@ -42,7 +40,10 @@ def add(request):
                 return JsonResponse(data={'status': 404, 'msg': 'error'})
         else:
             # 表示没有登录
-            return redirect('/account/login/?next=%s' % request.path)
+            return JsonResponse(data={'status': 401,
+                                      'msg': 'error',
+                                      # url': '/account/login/?next=%s' % request.path}
+                                      'url': '/account/login/'})
     else:
         # 表示不是ajax请求
         return HttpResponse('不是ajax请求!')
@@ -75,8 +76,10 @@ def update_num(request):
         car_id = request.POST.get('car_id')
         if action == '1':
             count = ShopCar.objects.filter(car_id=car_id, status=1).update(number=F('number') + 1)
-        else:
+        elif action == '2':
             count = ShopCar.objects.filter(car_id=car_id, status=1).update(number=F('number') - 1)
+        else:
+            return JsonResponse({'status': 404, 'msg': 'error'})
         return JsonResponse({'status': 200, 'msg': 'success'})
     except Exception as e:
-        pass
+        return JsonResponse({'status': 404, 'msg': 'error'})
